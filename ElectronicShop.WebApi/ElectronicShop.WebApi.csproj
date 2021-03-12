@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ElectronicShop.Application\ElectronicShop.Application.csproj" />
+    <ProjectReference Include="..\ElectronicShop.Data\ElectronicShop.Data.csproj" />
+  </ItemGroup>
+
+</Project>
