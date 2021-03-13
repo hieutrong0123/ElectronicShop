@@ -157,5 +157,10 @@ namespace ElectronicShop.Application.Products.Services
 
             return query;
         }
+
+        public Task<Product> GetProductById(int productId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

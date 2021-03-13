@@ -487,9 +487,9 @@ namespace ElectronicShop.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "daa529ee-fb0a-4b56-a3ea-35dfd663abb8", "Admin", "ADMIN" },
-                    { 2, "a6d1021c-98fe-402b-b5a2-0f701844945c", "Employee", "EMPLOYEE" },
-                    { 3, "e8380bcb-59a7-4efc-9683-b116df5c8844", "User", "USER" }
+                    { 1, "30a21030-7ba5-49fe-865f-1de6075cdf4c", "Admin", "ADMIN" },
+                    { 2, "e39f3598-84e1-46d9-8cbe-c50628d33062", "Employee", "EMPLOYEE" },
+                    { 3, "1b0e25e0-cf72-4283-9080-35814139a783", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
@@ -497,9 +497,9 @@ namespace ElectronicShop.Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "Address", "Birthday", "ConcurrencyStamp", "CreatedBy", "Email", "EmailConfirmed", "FirstMiddleName", "Gender", "LastName", "LockoutEnabled", "LockoutEnd", "ModifiedBy", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "Status", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { 1, 0, "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM", null, "32a02f2b-4f38-41f3-83fb-726b29df19c9", null, "hieutanmy321@gmail.com", false, "Nguyễn Trung", 0, "Hiếu", false, null, null, "HIEUTANMY321@GMAIL.COM", "HIEUNGUYEN", "AQAAAAEAACcQAAAAELWhPh+snn4eo8BvyGWwwi7pLe/9rcR9qGXSZyvmtWeJy8qYVRm2nSw9PhjAmA13tQ==", "0965924083", false, "56948af2-2959-4798-bd53-6abb3fd52f48", 0, false, "hieunguyen" },
-                    { 2, 0, "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM", null, "03cd566d-2859-4e98-8288-5e7c78797b7f", null, "hieu@gmail.com", false, "Võ Trọng", 0, "Hiếu", false, null, null, "HIEU@GMAIL.COM", "HIEUVO", "AQAAAAEAACcQAAAAED4QUsq/SCTmNHJJH3BCaxCiYgT1DUkoO1INosWbFDITKhi72TuPYS4dGm23oKABhA==", null, false, "9cfe5165-88d3-47e0-baa5-4ade0db460fd", 0, false, "hieuvo" },
-                    { 3, 0, "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM", null, "90104cea-a35e-4bba-bad9-a1ef7a26848a", null, "dat@gmail.com", false, "Lê Tấn", 0, "Đạt", false, null, null, "DAT@GMAIL.COM", "DATLE", "AQAAAAEAACcQAAAAEHnA7Qcb5A7RCR2cvGWi26mQkWc+yUTdspnROGOaDnye7LHwFjUXaxQ+Y8+6jj2BmQ==", null, false, "2d467e44-293a-4edb-bb1b-c36162820d45", 0, false, "datle" }
+                    { 1, 0, "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM", null, "2b87dea1-9606-4f31-bcc1-57c3c2eecd58", null, "hieutanmy321@gmail.com", false, "Nguyễn Trung", 0, "Hiếu", false, null, null, "HIEUTANMY321@GMAIL.COM", "HIEUNGUYEN", "AQAAAAEAACcQAAAAEBLbMcn7yDs3gFVmwzJqyeJOIswaYyyd1J/T15k+SnPkUdV/33vJ6PzHry822o/SQw==", "0965924083", false, "106f3dfd-80eb-4837-ab86-3d66246596fd", 0, false, "hieunguyen" },
+                    { 2, 0, "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM", null, "76daddbc-be28-4427-96dc-06cd1ef1951a", null, "hieu@gmail.com", false, "Võ Trọng", 0, "Hiếu", false, null, null, "HIEU@GMAIL.COM", "HIEUVO", "AQAAAAEAACcQAAAAEOa394p1HjChAwwDmIoTWJu0O24Z84BA9RN64zCwEn+BRcUtkKKIG12sz6qMdyrXQQ==", null, false, "9af3e739-e41d-4b6d-9476-d8933d47e1a3", 0, false, "hieuvo" },
+                    { 3, 0, "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM", null, "d8bebc00-74e0-41cc-b6bd-563ef922df3f", null, "dat@gmail.com", false, "Lê Tấn", 0, "Đạt", false, null, null, "DAT@GMAIL.COM", "DATLE", "AQAAAAEAACcQAAAAEDXWnYBN1MHksiDjpDXJB5cRx0Lu/SXlVmfVIC+gaIVRjwKggXyoeFXzbY/uEq58rg==", null, false, "924df425-56f9-4b56-8424-8e38b42cb291", 0, false, "datle" }
                 });
 
             migrationBuilder.InsertData(

@@ -1,17 +1,21 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AutoMapper;
+using ElectronicShop.Application.Authentications.Services;
+using ElectronicShop.Application.Common.Mapper;
 using ElectronicShop.Application.Products.Services;
 using ElectronicShop.Data.EF;
+using ElectronicShop.Data.Entities;
+using ElectronicShop.WebApi.ActionFilters;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System;
 
 namespace ElectronicShop.WebApi
 {
@@ -27,12 +31,50 @@ namespace ElectronicShop.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Model state validation filter ASP.NET Core
+            services.AddScoped<ValidationFilterAttribute>();
+
+            // Handler for MediatR query ASP.Net Core
+            services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
+
             services.AddDbContext<ElectronicShopDbContext>(options =>
-        options.UseSqlServer(Configuration.GetConnectionString("DefaultDb")));
+                    options.UseSqlServer(Configuration.GetConnectionString("DefaultDb")));
+
+            // Fix .Net Core 3.1 possible object cycle was detected which is not supported
+            services.AddControllers()
+                .AddNewtonsoftJson(options =>
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                );
+
+            // Compatibility version for ASP.NET Core MVC
+            services.AddMvc(); //.SetCompatibilityVersion(CompatibilityVersion.Latest);
+
+            // For use Session
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromHours(3);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            // For use AutoMapper
+            services.AddAutoMapper(typeof(ElectronicShopProfile));
+
+            // For use ElectronicShopDbContext
+            services.AddDbContext<ElectronicShopDbContext>();
+            services.AddIdentity<AspNetUser, AspNetRole>()
+                .AddEntityFrameworkStores<ElectronicShopDbContext>()
+                .AddDefaultTokenProviders();
 
             services.AddControllersWithViews();
 
-            // DI
+            //Dependency Injection
+            services.AddTransient<IAuthService, AuthService>();
+            services.AddTransient<UserManager<AspNetUser>, UserManager<AspNetUser>>();
+            services.AddTransient<SignInManager<AspNetUser>, SignInManager<AspNetUser>>();
+
             services.AddTransient<IProductService, ProductService>();
 
             services.AddSwaggerGen(swagger =>
@@ -72,6 +114,8 @@ namespace ElectronicShop.WebApi
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "ElectronicShop API V1"); });
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
