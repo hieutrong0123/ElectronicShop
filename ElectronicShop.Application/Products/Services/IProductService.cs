@@ -18,7 +18,7 @@ namespace ElectronicShop.Application.Products.Services
 
         Task<List<Product>> GetAllProduct();
 
-        Task<Product> GetProductByIdAsync(int productId);
+        Task<Product> GetProductById(int productId);
 
         Task<List<Product>> GetProductByCategoryId(int categoryId);
 

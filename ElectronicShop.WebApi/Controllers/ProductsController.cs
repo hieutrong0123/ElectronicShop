@@ -10,18 +10,25 @@ namespace ElectronicShop.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class ProductsController : ControllerBase
     {
         private readonly IProductService _productService;
-        public ProductController(IProductService productService)
+        public ProductsController(IProductService productService)
         {
             _productService = productService;
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetAllProduct()
         {
             var products = await _productService.GetAllProduct();
+            return Ok(products);
+        }
+
+        [HttpGet("{productId}")]
+        public async Task<IActionResult> GetProductById(int productId)
+        {
+            var products = await _productService.GetProductById(productId);
             return Ok(products);
         }
     }
