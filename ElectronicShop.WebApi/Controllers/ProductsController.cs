@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ElectronicShop.Application.Products.Services;
-using Microsoft.AspNetCore.Http;
+﻿using ElectronicShop.Application.Products.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace ElectronicShop.WebApi.Controllers
 {
