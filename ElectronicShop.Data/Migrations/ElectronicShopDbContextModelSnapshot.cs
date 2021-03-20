@@ -46,21 +46,21 @@ namespace ElectronicShop.Data.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "30a21030-7ba5-49fe-865f-1de6075cdf4c",
+                            ConcurrencyStamp = "7bc5a2c4-1e71-4c81-9873-2e6ad251bb21",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "e39f3598-84e1-46d9-8cbe-c50628d33062",
+                            ConcurrencyStamp = "7d62bf1e-ff7f-42e7-8900-e0f9a581ca2a",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         },
                         new
                         {
                             Id = 3,
-                            ConcurrencyStamp = "1b0e25e0-cf72-4283-9080-35814139a783",
+                            ConcurrencyStamp = "b191ee67-d046-4d86-9784-1a9ca4dcde6e",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -104,7 +104,8 @@ namespace ElectronicShop.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
                     b.Property<DateTime?>("Birthday")
                         .HasColumnType("DateTime");
@@ -113,8 +114,8 @@ namespace ElectronicShop.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
@@ -128,7 +129,8 @@ namespace ElectronicShop.Data.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(250)")
+                        .HasMaxLength(250);
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
@@ -153,8 +155,8 @@ namespace ElectronicShop.Data.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("ModifiedBy")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<string>("NormalizedEmail")
                         .HasColumnType("nvarchar(max)");
@@ -166,7 +168,8 @@ namespace ElectronicShop.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
@@ -181,7 +184,9 @@ namespace ElectronicShop.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.HasKey("Id");
 
@@ -193,7 +198,7 @@ namespace ElectronicShop.Data.Migrations
                             Id = 1,
                             AccessFailedCount = 0,
                             Address = "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM",
-                            ConcurrencyStamp = "2b87dea1-9606-4f31-bcc1-57c3c2eecd58",
+                            ConcurrencyStamp = "3cdcd0f2-1257-4a8c-9177-f73669a114e6",
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "hieutanmy321@gmail.com",
@@ -204,10 +209,10 @@ namespace ElectronicShop.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "HIEUTANMY321@GMAIL.COM",
                             NormalizedUserName = "HIEUNGUYEN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBLbMcn7yDs3gFVmwzJqyeJOIswaYyyd1J/T15k+SnPkUdV/33vJ6PzHry822o/SQw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEG8UQEATteA2l/VZMPKwclQ/wVurz8ZHbSqgqv9VQPN1W7fAwF6rYk7hDbt+KmA4bQ==",
                             PhoneNumber = "0965924083",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "106f3dfd-80eb-4837-ab86-3d66246596fd",
+                            SecurityStamp = "c4228eb4-feb4-4a54-99fd-1f2f76a081e0",
                             Status = 0,
                             TwoFactorEnabled = false,
                             UserName = "hieunguyen"
@@ -217,7 +222,7 @@ namespace ElectronicShop.Data.Migrations
                             Id = 2,
                             AccessFailedCount = 0,
                             Address = "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM",
-                            ConcurrencyStamp = "76daddbc-be28-4427-96dc-06cd1ef1951a",
+                            ConcurrencyStamp = "39eef1fc-b1d2-4910-83c6-4c8ff0226580",
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "hieu@gmail.com",
@@ -228,9 +233,9 @@ namespace ElectronicShop.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "HIEU@GMAIL.COM",
                             NormalizedUserName = "HIEUVO",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOa394p1HjChAwwDmIoTWJu0O24Z84BA9RN64zCwEn+BRcUtkKKIG12sz6qMdyrXQQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJztCsH1jLn7yEjgzc+90lBi4KrQNy9hncRQAQ1pwmLcw0apXQZnYajKDWEm4w4XdQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9af3e739-e41d-4b6d-9476-d8933d47e1a3",
+                            SecurityStamp = "a6b57b51-f767-4e0e-973c-9ce5f54fafbd",
                             Status = 0,
                             TwoFactorEnabled = false,
                             UserName = "hieuvo"
@@ -240,7 +245,7 @@ namespace ElectronicShop.Data.Migrations
                             Id = 3,
                             AccessFailedCount = 0,
                             Address = "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM",
-                            ConcurrencyStamp = "d8bebc00-74e0-41cc-b6bd-563ef922df3f",
+                            ConcurrencyStamp = "3414c1dd-0752-435b-8576-2cb468ee99b8",
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "dat@gmail.com",
@@ -251,9 +256,9 @@ namespace ElectronicShop.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "DAT@GMAIL.COM",
                             NormalizedUserName = "DATLE",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDXWnYBN1MHksiDjpDXJB5cRx0Lu/SXlVmfVIC+gaIVRjwKggXyoeFXzbY/uEq58rg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHbHHl+ZuF5odkFrxNP925XeI9lp1aSFYbDBvSs5+ZBbl7bQ7gHNkJQr0AFB7D80gw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "924df425-56f9-4b56-8424-8e38b42cb291",
+                            SecurityStamp = "2eaae4bd-e1bf-4136-a5db-c6354858c6b5",
                             Status = 0,
                             TwoFactorEnabled = false,
                             UserName = "datle"
@@ -373,8 +378,8 @@ namespace ElectronicShop.Data.Migrations
 
                     b.Property<string>("CreatedBy")
                         .IsRequired()
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
@@ -388,8 +393,8 @@ namespace ElectronicShop.Data.Migrations
 
                     b.Property<string>("ModifiedBy")
                         .IsRequired()
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -670,7 +675,8 @@ namespace ElectronicShop.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasMaxLength(50);
 
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
@@ -693,7 +699,8 @@ namespace ElectronicShop.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("ModefiedBy")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasMaxLength(50);
 
                     b.Property<string>("Name")
                         .IsRequired()

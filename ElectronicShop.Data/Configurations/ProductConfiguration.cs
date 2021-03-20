@@ -53,6 +53,14 @@ namespace ElectronicShop.Data.Configurations
                 .HasColumnType("DateTime")
                 .HasDefaultValueSql("GetDate()");
 
+            builder.Property(x => x.CreatedBy)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            builder.Property(x => x.ModefiedBy)
+                .IsRequired()
+                .HasMaxLength(50);
+
             builder.HasOne(x => x.Category)
                 .WithMany(x => x.Products)
                 .HasForeignKey(x => x.CategoryId)

@@ -1,5 +1,7 @@
-﻿using ElectronicShop.Application.Users.Queries;
+﻿using ElectronicShop.Application.Users.Commands;
+using ElectronicShop.Application.Users.Queries;
 using ElectronicShop.Utilities.SystemConstants;
+using ElectronicShop.WebApi.ActionFilters;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -37,6 +39,14 @@ namespace ElectronicShop.WebApi.Controllers
             var query = new GetAllUserQuery();
 
             return Ok(await _mediator.Send(query));
+        }
+
+        [HttpPost("create")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        [AllowAnonymous]
+        public async Task<IActionResult> Create([FromBody] CreateUserCommand request)
+        {
+            return Ok(await _mediator.Send(request));
         }
     }
 }

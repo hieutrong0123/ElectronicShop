@@ -8,8 +8,7 @@
 		<PackageReference Include="MediatR" Version="8.0.0" />
 		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
-		<PackageReference Include="
-						  " Version="10.1.1" />
+		<PackageReference Include="&#xD;&#xA;						  " Version="10.1.1" />
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
 	</ItemGroup>
@@ -17,10 +16,6 @@
   <ItemGroup>
     <ProjectReference Include="..\ElectronicShop.Data\ElectronicShop.Data.csproj" />
     <ProjectReference Include="..\ElectronicShop.Utilities\ElectronicShop.Utilities.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Users\Commands\" />
   </ItemGroup>
 
 </Project>

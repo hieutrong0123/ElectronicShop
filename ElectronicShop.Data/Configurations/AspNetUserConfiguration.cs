@@ -18,6 +18,10 @@ namespace ElectronicShop.Data.Configurations
             builder.Property(x => x.Id)
                 .UseIdentityColumn();
 
+            builder.Property(x => x.UserName)
+                .IsRequired()
+                .HasMaxLength(50);
+
             builder.Property(x => x.FirstMiddleName)
                 .IsRequired()
                 .HasMaxLength(50);
@@ -27,7 +31,8 @@ namespace ElectronicShop.Data.Configurations
                 .HasMaxLength(50);
 
             builder.Property(x => x.Address)
-                .IsRequired(false);
+                .IsRequired(false)
+                .HasMaxLength(200);
 
             builder.Property(x => x.Status)
                 .IsRequired();
@@ -45,18 +50,22 @@ namespace ElectronicShop.Data.Configurations
 
             builder.Property(x => x.CreatedBy)
                 .IsRequired(false)
-                .HasMaxLength(256);
+                .HasMaxLength(50);
 
             builder.Property(x => x.ModifiedBy)
                 .IsRequired(false)
-                .HasMaxLength(256);
+                .HasMaxLength(50);
 
             builder.Property(x => x.Birthday)
                 .IsRequired(false)
                 .HasColumnType("DateTime");
 
             builder.Property(x => x.Email)
-                .IsRequired();
+                .IsRequired()
+                .HasMaxLength(250);
+
+            builder.Property(x => x.PhoneNumber)
+                .HasMaxLength(20);
         }
     }
 }

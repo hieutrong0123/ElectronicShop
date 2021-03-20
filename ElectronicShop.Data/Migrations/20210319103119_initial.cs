@@ -28,15 +28,15 @@ namespace ElectronicShop.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserName = table.Column<string>(nullable: true),
+                    UserName = table.Column<string>(maxLength: 50, nullable: false),
                     NormalizedUserName = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: false),
+                    Email = table.Column<string>(maxLength: 250, nullable: false),
                     NormalizedEmail = table.Column<string>(nullable: true),
                     EmailConfirmed = table.Column<bool>(nullable: false),
                     PasswordHash = table.Column<string>(nullable: true),
                     SecurityStamp = table.Column<string>(nullable: true),
                     ConcurrencyStamp = table.Column<string>(nullable: true),
-                    PhoneNumber = table.Column<string>(nullable: true),
+                    PhoneNumber = table.Column<string>(maxLength: 20, nullable: true),
                     PhoneNumberConfirmed = table.Column<bool>(nullable: false),
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
@@ -44,14 +44,14 @@ namespace ElectronicShop.Data.Migrations
                     AccessFailedCount = table.Column<int>(nullable: false),
                     FirstMiddleName = table.Column<string>(maxLength: 50, nullable: false),
                     LastName = table.Column<string>(maxLength: 50, nullable: false),
-                    Address = table.Column<string>(nullable: true),
+                    Address = table.Column<string>(maxLength: 200, nullable: true),
                     Status = table.Column<int>(nullable: false),
                     Gender = table.Column<int>(nullable: false),
                     Birthday = table.Column<DateTime>(type: "DateTime", nullable: true),
                     DateCreated = table.Column<DateTime>(type: "DateTime", nullable: false, defaultValueSql: "GetDate()"),
                     DateModified = table.Column<DateTime>(type: "DateTime", nullable: false, defaultValueSql: "GetDate()"),
-                    CreatedBy = table.Column<string>(maxLength: 256, nullable: true),
-                    ModifiedBy = table.Column<string>(maxLength: 256, nullable: true)
+                    CreatedBy = table.Column<string>(maxLength: 50, nullable: true),
+                    ModifiedBy = table.Column<string>(maxLength: 50, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -237,8 +237,8 @@ namespace ElectronicShop.Data.Migrations
                     ProductTypeId = table.Column<int>(nullable: false),
                     DateCreated = table.Column<DateTime>(type: "DateTime", nullable: false, defaultValueSql: "GetDate()"),
                     DateModified = table.Column<DateTime>(type: "DateTime", nullable: false, defaultValueSql: "GetDate()"),
-                    CreatedBy = table.Column<string>(maxLength: 256, nullable: false),
-                    ModifiedBy = table.Column<string>(maxLength: 256, nullable: false)
+                    CreatedBy = table.Column<string>(maxLength: 50, nullable: false),
+                    ModifiedBy = table.Column<string>(maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -301,8 +301,8 @@ namespace ElectronicShop.Data.Migrations
                     Alias = table.Column<string>(maxLength: 150, nullable: false),
                     DateCreated = table.Column<DateTime>(type: "DateTime", nullable: false, defaultValueSql: "GetDate()"),
                     DateModified = table.Column<DateTime>(type: "DateTime", nullable: false, defaultValueSql: "GetDate()"),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    ModefiedBy = table.Column<int>(nullable: false)
+                    CreatedBy = table.Column<int>(maxLength: 50, nullable: false),
+                    ModefiedBy = table.Column<int>(maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -487,9 +487,9 @@ namespace ElectronicShop.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "30a21030-7ba5-49fe-865f-1de6075cdf4c", "Admin", "ADMIN" },
-                    { 2, "e39f3598-84e1-46d9-8cbe-c50628d33062", "Employee", "EMPLOYEE" },
-                    { 3, "1b0e25e0-cf72-4283-9080-35814139a783", "User", "USER" }
+                    { 1, "7bc5a2c4-1e71-4c81-9873-2e6ad251bb21", "Admin", "ADMIN" },
+                    { 2, "7d62bf1e-ff7f-42e7-8900-e0f9a581ca2a", "Employee", "EMPLOYEE" },
+                    { 3, "b191ee67-d046-4d86-9784-1a9ca4dcde6e", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
@@ -497,9 +497,9 @@ namespace ElectronicShop.Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "Address", "Birthday", "ConcurrencyStamp", "CreatedBy", "Email", "EmailConfirmed", "FirstMiddleName", "Gender", "LastName", "LockoutEnabled", "LockoutEnd", "ModifiedBy", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "Status", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { 1, 0, "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM", null, "2b87dea1-9606-4f31-bcc1-57c3c2eecd58", null, "hieutanmy321@gmail.com", false, "Nguyễn Trung", 0, "Hiếu", false, null, null, "HIEUTANMY321@GMAIL.COM", "HIEUNGUYEN", "AQAAAAEAACcQAAAAEBLbMcn7yDs3gFVmwzJqyeJOIswaYyyd1J/T15k+SnPkUdV/33vJ6PzHry822o/SQw==", "0965924083", false, "106f3dfd-80eb-4837-ab86-3d66246596fd", 0, false, "hieunguyen" },
-                    { 2, 0, "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM", null, "76daddbc-be28-4427-96dc-06cd1ef1951a", null, "hieu@gmail.com", false, "Võ Trọng", 0, "Hiếu", false, null, null, "HIEU@GMAIL.COM", "HIEUVO", "AQAAAAEAACcQAAAAEOa394p1HjChAwwDmIoTWJu0O24Z84BA9RN64zCwEn+BRcUtkKKIG12sz6qMdyrXQQ==", null, false, "9af3e739-e41d-4b6d-9476-d8933d47e1a3", 0, false, "hieuvo" },
-                    { 3, 0, "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM", null, "d8bebc00-74e0-41cc-b6bd-563ef922df3f", null, "dat@gmail.com", false, "Lê Tấn", 0, "Đạt", false, null, null, "DAT@GMAIL.COM", "DATLE", "AQAAAAEAACcQAAAAEDXWnYBN1MHksiDjpDXJB5cRx0Lu/SXlVmfVIC+gaIVRjwKggXyoeFXzbY/uEq58rg==", null, false, "924df425-56f9-4b56-8424-8e38b42cb291", 0, false, "datle" }
+                    { 1, 0, "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM", null, "3cdcd0f2-1257-4a8c-9177-f73669a114e6", null, "hieutanmy321@gmail.com", false, "Nguyễn Trung", 0, "Hiếu", false, null, null, "HIEUTANMY321@GMAIL.COM", "HIEUNGUYEN", "AQAAAAEAACcQAAAAEG8UQEATteA2l/VZMPKwclQ/wVurz8ZHbSqgqv9VQPN1W7fAwF6rYk7hDbt+KmA4bQ==", "0965924083", false, "c4228eb4-feb4-4a54-99fd-1f2f76a081e0", 0, false, "hieunguyen" },
+                    { 2, 0, "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM", null, "39eef1fc-b1d2-4910-83c6-4c8ff0226580", null, "hieu@gmail.com", false, "Võ Trọng", 0, "Hiếu", false, null, null, "HIEU@GMAIL.COM", "HIEUVO", "AQAAAAEAACcQAAAAEJztCsH1jLn7yEjgzc+90lBi4KrQNy9hncRQAQ1pwmLcw0apXQZnYajKDWEm4w4XdQ==", null, false, "a6b57b51-f767-4e0e-973c-9ce5f54fafbd", 0, false, "hieuvo" },
+                    { 3, 0, "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM", null, "3414c1dd-0752-435b-8576-2cb468ee99b8", null, "dat@gmail.com", false, "Lê Tấn", 0, "Đạt", false, null, null, "DAT@GMAIL.COM", "DATLE", "AQAAAAEAACcQAAAAEHbHHl+ZuF5odkFrxNP925XeI9lp1aSFYbDBvSs5+ZBbl7bQ7gHNkJQr0AFB7D80gw==", null, false, "2eaae4bd-e1bf-4136-a5db-c6354858c6b5", 0, false, "datle" }
                 });
 
             migrationBuilder.InsertData(

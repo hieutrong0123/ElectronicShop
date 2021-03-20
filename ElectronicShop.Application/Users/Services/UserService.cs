@@ -1,12 +1,15 @@
 ﻿using AutoMapper;
 using ElectronicShop.Application.Common.Models;
+using ElectronicShop.Application.Users.Commands;
 using ElectronicShop.Application.Users.Models;
 using ElectronicShop.Data.EF;
 using ElectronicShop.Data.Entities;
 using ElectronicShop.Data.Enums;
+using ElectronicShop.Utilities.SystemConstants;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -68,6 +71,59 @@ namespace ElectronicShop.Application.Users.Services
             }
 
             return await Task.FromResult(new ApiSuccessResult<List<UserVm>>(result));
+        }
+
+        public async Task<ApiResult<string>> CreateAsync(CreateUserCommand request)
+        {
+            var userEmail = await _userManager.FindByEmailAsync(request.Email);
+            var userUserName = await _userManager.FindByNameAsync(request.UserName);
+
+            if(userEmail !=null || userUserName != null )
+            {
+                return new ApiErrorResult<string>("Tài khoản không tồn tại");
+            }
+
+            var user = _mapper.Map<AspNetUser>(request);
+            user.DateCreated = DateTime.Now;
+            user.DateModified = user.DateCreated;
+            user.Status = UserStatus.ACTIVE;
+
+            try
+            {
+                await _userManager.CreateAsync(user, request.Password);
+                await AddUserRoleAsync(user, request.UserInRole);
+            }
+            catch
+            {
+                await _userManager.DeleteAsync(user);
+
+                return await Task.FromResult(
+                    new ApiErrorResult<string>("Đăng ký thất bại, không thể thêm quyền cho người dùng"));
+            }
+
+            return await Task.FromResult(new ApiSuccessResult<string>("Thêm người dùng thành công"));
+
+        }
+
+        private async Task AddUserRoleAsync(AspNetUser user, string roleName)
+        {
+            var isAdmin = _httpContextAccessor.HttpContext.User.IsInRole(Constants.ADMIN);
+            
+            var curentUser = _httpContextAccessor.HttpContext.User.Identity.Name;
+
+            string role = Constants.USERROLENAME;
+
+            user.CreatedBy = user.UserName;
+
+            if(isAdmin)
+            {
+                role = roleName;
+                user.CreatedBy = curentUser;
+            }
+
+            await _userManager.UpdateAsync(user);
+
+            await _userManager.AddToRoleAsync(user, role);
         }
     }
 }
