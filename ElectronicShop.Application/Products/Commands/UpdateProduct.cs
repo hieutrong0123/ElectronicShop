@@ -29,6 +29,6 @@ namespace ElectronicShop.Application.Products.Commands
 
         public DateTime DateModified { get; set; }
 
-        public int ModefiedBy { get; set; }
+        public string ModefiedBy { get; set; }
     }
 }

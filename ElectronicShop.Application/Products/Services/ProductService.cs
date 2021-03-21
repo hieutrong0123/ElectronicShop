@@ -34,8 +34,8 @@ namespace ElectronicShop.Application.Products.Services
                 Alias = request.Alias,
                 DateCreated = DateTime.Now,
                 DateModified = DateTime.Now,
-                CreatedBy = 1,
-                ModefiedBy = 1
+                CreatedBy = "",
+                ModefiedBy = ""
             };
             _context.Products.Add(product);
             return await _context.SaveChangesAsync();

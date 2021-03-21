@@ -58,7 +58,7 @@ namespace ElectronicShop.Data.Configurations
                 .HasMaxLength(50);
 
             builder.Property(x => x.ModefiedBy)
-                .IsRequired()
+                .IsRequired(false)
                 .HasMaxLength(50);
 
             builder.HasOne(x => x.Category)

@@ -39,7 +39,7 @@ namespace ElectronicShop.Data.Configurations
                 .HasMaxLength(50);
 
             builder.Property(x => x.ModifiedBy)
-                .IsRequired()
+                .IsRequired(false)
                 .HasMaxLength(50);
 
             builder.HasOne(x => x.Parent)

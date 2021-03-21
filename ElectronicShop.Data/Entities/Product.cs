@@ -31,9 +31,9 @@ namespace ElectronicShop.Data.Entities
 
         public DateTime DateModified { get; set; }
 
-        public int CreatedBy { get; set; }
+        public string CreatedBy { get; set; }
 
-        public int ModefiedBy { get; set; }
+        public string ModefiedBy { get; set; }
 
         public Category Category { get; set; }
 

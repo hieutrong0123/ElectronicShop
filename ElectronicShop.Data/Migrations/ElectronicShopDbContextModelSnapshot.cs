@@ -46,21 +46,21 @@ namespace ElectronicShop.Data.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "7bc5a2c4-1e71-4c81-9873-2e6ad251bb21",
+                            ConcurrencyStamp = "732419d9-a562-4dd8-a78e-1a36017beb24",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "7d62bf1e-ff7f-42e7-8900-e0f9a581ca2a",
+                            ConcurrencyStamp = "49790a9e-a9ca-4dbe-962c-7d7e119e7982",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         },
                         new
                         {
                             Id = 3,
-                            ConcurrencyStamp = "b191ee67-d046-4d86-9784-1a9ca4dcde6e",
+                            ConcurrencyStamp = "8e52e049-f324-418c-a958-3eca8df759fe",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -198,7 +198,7 @@ namespace ElectronicShop.Data.Migrations
                             Id = 1,
                             AccessFailedCount = 0,
                             Address = "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM",
-                            ConcurrencyStamp = "3cdcd0f2-1257-4a8c-9177-f73669a114e6",
+                            ConcurrencyStamp = "741e26e8-293d-4bb3-9b94-e59f685e8f4e",
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "hieutanmy321@gmail.com",
@@ -209,10 +209,10 @@ namespace ElectronicShop.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "HIEUTANMY321@GMAIL.COM",
                             NormalizedUserName = "HIEUNGUYEN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEG8UQEATteA2l/VZMPKwclQ/wVurz8ZHbSqgqv9VQPN1W7fAwF6rYk7hDbt+KmA4bQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOMX61CauCrcYM1I1kBsE3DLm6PdYzjKa32rOvBsYHFL9ab+a3efmzmIAHfHtgXkng==",
                             PhoneNumber = "0965924083",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c4228eb4-feb4-4a54-99fd-1f2f76a081e0",
+                            SecurityStamp = "b0d28e94-b477-4182-8b65-39ad22022d38",
                             Status = 0,
                             TwoFactorEnabled = false,
                             UserName = "hieunguyen"
@@ -222,7 +222,7 @@ namespace ElectronicShop.Data.Migrations
                             Id = 2,
                             AccessFailedCount = 0,
                             Address = "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM",
-                            ConcurrencyStamp = "39eef1fc-b1d2-4910-83c6-4c8ff0226580",
+                            ConcurrencyStamp = "50e29e23-6024-4cfb-b694-c3ffa3c058d2",
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "hieu@gmail.com",
@@ -233,9 +233,9 @@ namespace ElectronicShop.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "HIEU@GMAIL.COM",
                             NormalizedUserName = "HIEUVO",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJztCsH1jLn7yEjgzc+90lBi4KrQNy9hncRQAQ1pwmLcw0apXQZnYajKDWEm4w4XdQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHzGxIovEw8TWkq/9GB8N/WPxfmLLqTeyw4KRquWsyB+C7axSRYfqAdGTLPmmu7lkQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a6b57b51-f767-4e0e-973c-9ce5f54fafbd",
+                            SecurityStamp = "51f167dd-4abb-402e-a4cf-1b69bf773208",
                             Status = 0,
                             TwoFactorEnabled = false,
                             UserName = "hieuvo"
@@ -245,7 +245,7 @@ namespace ElectronicShop.Data.Migrations
                             Id = 3,
                             AccessFailedCount = 0,
                             Address = "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM",
-                            ConcurrencyStamp = "3414c1dd-0752-435b-8576-2cb468ee99b8",
+                            ConcurrencyStamp = "1dff6c0c-eb79-4a72-aedd-49c7a35ab2c0",
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "dat@gmail.com",
@@ -256,9 +256,9 @@ namespace ElectronicShop.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "DAT@GMAIL.COM",
                             NormalizedUserName = "DATLE",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHbHHl+ZuF5odkFrxNP925XeI9lp1aSFYbDBvSs5+ZBbl7bQ7gHNkJQr0AFB7D80gw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMlGKQjOypgUDF5FB5dKxkBAaIpZ2bx2taJpcCZkfG5n086t47dRiARXDB9oN/j4qA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2eaae4bd-e1bf-4136-a5db-c6354858c6b5",
+                            SecurityStamp = "67f3a829-a9fc-46b2-886b-45b363871eaa",
                             Status = 0,
                             TwoFactorEnabled = false,
                             UserName = "datle"
@@ -392,7 +392,6 @@ namespace ElectronicShop.Data.Migrations
                         .HasDefaultValueSql("GetDate()");
 
                     b.Property<string>("ModifiedBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
@@ -674,8 +673,9 @@ namespace ElectronicShop.Data.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int")
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
                     b.Property<DateTime>("DateCreated")
@@ -698,8 +698,8 @@ namespace ElectronicShop.Data.Migrations
                     b.Property<int>("Inventory")
                         .HasColumnType("int");
 
-                    b.Property<int>("ModefiedBy")
-                        .HasColumnType("int")
+                    b.Property<string>("ModefiedBy")
+                        .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
                     b.Property<string>("Name")
