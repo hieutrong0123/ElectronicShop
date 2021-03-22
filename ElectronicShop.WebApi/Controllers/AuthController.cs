@@ -29,5 +29,11 @@ namespace ElectronicShop.WebApi.Controllers
 
             return Ok(result);
         }
+        [HttpPost("sign-out")]
+        public async Task<IActionResult> SignOut()
+        {
+            await _mediator.Send(new SignOutCommand());
+            return NoContent();
+        }
     }
 }

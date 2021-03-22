@@ -48,15 +48,21 @@ namespace ElectronicShop.Data.Configurations
                 .HasColumnType("DateTime")
                 .HasDefaultValueSql("GetDate()");
 
-            builder.HasOne(x => x.Created)
-                .WithMany(x => x.CreatedUsers)
-                .HasForeignKey(x => x.CreatedBy)
-                .OnDelete(DeleteBehavior.Restrict);
+            //builder.HasOne(x => x.Created)
+            //    .WithMany(x => x.CreatedUsers)
+            //    .HasForeignKey(x => x.CreatedBy)
+            //    .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasOne(x => x.Modified)
-                .WithMany(x => x.ModifiedUsers)
-                .HasForeignKey(x => x.ModifiedBy)
-                .OnDelete(DeleteBehavior.Restrict);
+            //builder.HasOne(x => x.Modified)
+            //    .WithMany(x => x.ModifiedUsers)
+            //    .HasForeignKey(x => x.ModifiedBy)
+            //    .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Property(x => x.CreatedBy)
+                .IsRequired();
+
+            builder.Property(x => x.ModifiedBy)
+                .IsRequired();
 
             builder.Property(x => x.Birthday)
                 .IsRequired(false)

@@ -65,6 +65,7 @@ namespace ElectronicShop.Application.Authentications.Services
 
             _httpContextAccessor.HttpContext.Session.SetComplexData(Constants.CURRENTUSER, user);
 
+
             var roles = await _userManager.GetRolesAsync(user);
 
             var token = CreateToken(roles, user);
@@ -99,6 +100,13 @@ namespace ElectronicShop.Application.Authentications.Services
                 signingCredentials: creds);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        public async Task<bool> SignOutAsync()
+        {
+            await _signInManager.SignOutAsync();
+            _httpContextAccessor.HttpContext.Session.Remove(Constants.CURRENTUSER);
+            return true;
         }
     }
 }

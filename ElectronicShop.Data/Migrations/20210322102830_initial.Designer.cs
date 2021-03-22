@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ElectronicShop.Data.Migrations
 {
     [DbContext(typeof(ElectronicShopDbContext))]
-    [Migration("20210322043825_initial")]
+    [Migration("20210322102830_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,21 +48,21 @@ namespace ElectronicShop.Data.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "82102d4e-c56e-498a-a428-5da6f5fd8fc6",
+                            ConcurrencyStamp = "59d20ba2-bcee-4d3e-a31d-b7cdd8463954",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "cf3945cf-7d7b-4b19-bfec-5b3729ab59c4",
+                            ConcurrencyStamp = "17b3e6ca-118a-4889-9e70-c43560a8bb0c",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         },
                         new
                         {
                             Id = 3,
-                            ConcurrencyStamp = "8953a270-59d5-4d10-8d8d-cf9391df5c86",
+                            ConcurrencyStamp = "f513a070-9a55-4813-8c31-d548287e42e5",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -190,10 +190,6 @@ namespace ElectronicShop.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CreatedBy");
-
-                    b.HasIndex("ModifiedBy");
-
                     b.ToTable("AspNetUsers");
 
                     b.HasData(
@@ -202,7 +198,7 @@ namespace ElectronicShop.Data.Migrations
                             Id = 1,
                             AccessFailedCount = 0,
                             Address = "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM",
-                            ConcurrencyStamp = "9bcf3dba-901d-430b-8879-74d55e01032c",
+                            ConcurrencyStamp = "30d66db3-f20a-4aa3-b121-b2086e5dcaaf",
                             CreatedBy = 1,
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -215,10 +211,10 @@ namespace ElectronicShop.Data.Migrations
                             ModifiedBy = 1,
                             NormalizedEmail = "HIEUTANMY321@GMAIL.COM",
                             NormalizedUserName = "HIEUNGUYEN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJ83zvu4Hi3TDWUBwyICB+yYugiZQXxGaYD8GTtkEkotLnduvDvc9I1nY9eqSIlz8A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDg2u5B6W2YbD8oRHCeQ9R+9Ga2CeEA21KI0jUmnLc61j3sAI4UjtGsaADQfOoUyJQ==",
                             PhoneNumber = "0965924083",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7b0aab5c-06bf-4e6f-b462-e7c88f854f78",
+                            SecurityStamp = "fb999908-1b6a-4484-8d4a-67eca343dd32",
                             Status = 0,
                             TwoFactorEnabled = false,
                             UserName = "hieunguyen"
@@ -228,7 +224,7 @@ namespace ElectronicShop.Data.Migrations
                             Id = 2,
                             AccessFailedCount = 0,
                             Address = "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM",
-                            ConcurrencyStamp = "ddc796f5-1e1c-4d5c-a57f-612ca0372c52",
+                            ConcurrencyStamp = "26f5fa64-67fb-4e79-ada5-94b4189866c1",
                             CreatedBy = 1,
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -241,9 +237,9 @@ namespace ElectronicShop.Data.Migrations
                             ModifiedBy = 1,
                             NormalizedEmail = "HIEU@GMAIL.COM",
                             NormalizedUserName = "HIEUVO",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJ/A+g67n3vKYh7mYOKXLDlHE+nyjdDo4hhAOGKC98H8AWU44ezAqvjIbb/Ua8igJA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEH9aDemhfn+n8UuKN18WA6iXoZoI755U4esiNbWYNGoN9jMnii/uDATpwHGrtcZsjA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7fef8114-cf71-454a-a2b4-069e766417a5",
+                            SecurityStamp = "08be34fd-0eca-4a21-9109-ea3b0ff516fe",
                             Status = 0,
                             TwoFactorEnabled = false,
                             UserName = "hieuvo"
@@ -253,7 +249,7 @@ namespace ElectronicShop.Data.Migrations
                             Id = 3,
                             AccessFailedCount = 0,
                             Address = "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM",
-                            ConcurrencyStamp = "cb560b6b-0c0c-4afa-ba3a-68759eea6d30",
+                            ConcurrencyStamp = "58bca05e-b604-4603-ac8c-6b64960114d1",
                             CreatedBy = 1,
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -266,9 +262,9 @@ namespace ElectronicShop.Data.Migrations
                             ModifiedBy = 1,
                             NormalizedEmail = "DAT@GMAIL.COM",
                             NormalizedUserName = "DATLE",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBe7odCaf0ozUMWxt4X1fL+adD+fQMG8jRX5Dg7oTGsqNVFCLn/90nyB1X17qEpC/g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFYwLCiP+SXk9o6GYfuCc7DvevaVunz2MJuhbsizC5gbE3RFZQCNL5NQbm5s4GxTmA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e4aa455f-7bb0-4bc4-849e-dbca170d7305",
+                            SecurityStamp = "0f2c6280-7737-426f-b11f-93461f401c4b",
                             Status = 0,
                             TwoFactorEnabled = false,
                             UserName = "datle"
@@ -877,21 +873,6 @@ namespace ElectronicShop.Data.Migrations
                         .WithMany("AspNetRoleClaims")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("ElectronicShop.Data.Entities.AspNetUser", b =>
-                {
-                    b.HasOne("ElectronicShop.Data.Entities.AspNetUser", "Created")
-                        .WithMany("CreatedUsers")
-                        .HasForeignKey("CreatedBy")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("ElectronicShop.Data.Entities.AspNetUser", "Modified")
-                        .WithMany("ModifiedUsers")
-                        .HasForeignKey("ModifiedBy")
-                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 

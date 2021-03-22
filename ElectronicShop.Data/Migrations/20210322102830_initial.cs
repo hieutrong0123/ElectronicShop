@@ -56,18 +56,6 @@ namespace ElectronicShop.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AspNetUsers_AspNetUsers_CreatedBy",
-                        column: x => x.CreatedBy,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_AspNetUsers_AspNetUsers_ModifiedBy",
-                        column: x => x.ModifiedBy,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -511,29 +499,34 @@ namespace ElectronicShop.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "82102d4e-c56e-498a-a428-5da6f5fd8fc6", "Admin", "ADMIN" },
-                    { 2, "cf3945cf-7d7b-4b19-bfec-5b3729ab59c4", "Employee", "EMPLOYEE" },
-                    { 3, "8953a270-59d5-4d10-8d8d-cf9391df5c86", "User", "USER" }
+                    { 1, "59d20ba2-bcee-4d3e-a31d-b7cdd8463954", "Admin", "ADMIN" },
+                    { 2, "17b3e6ca-118a-4889-9e70-c43560a8bb0c", "Employee", "EMPLOYEE" },
+                    { 3, "f513a070-9a55-4813-8c31-d548287e42e5", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "Address", "Birthday", "ConcurrencyStamp", "CreatedBy", "Email", "EmailConfirmed", "FirstMiddleName", "Gender", "LastName", "LockoutEnabled", "LockoutEnd", "ModifiedBy", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "Status", "TwoFactorEnabled", "UserName" },
-                values: new object[] { 1, 0, "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM", null, "9bcf3dba-901d-430b-8879-74d55e01032c", 1, "hieutanmy321@gmail.com", false, "Nguyễn Trung", 0, "Hiếu", false, null, 1, "HIEUTANMY321@GMAIL.COM", "HIEUNGUYEN", "AQAAAAEAACcQAAAAEJ83zvu4Hi3TDWUBwyICB+yYugiZQXxGaYD8GTtkEkotLnduvDvc9I1nY9eqSIlz8A==", "0965924083", false, "7b0aab5c-06bf-4e6f-b462-e7c88f854f78", 0, false, "hieunguyen" });
+                values: new object[,]
+                {
+                    { 1, 0, "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM", null, "30d66db3-f20a-4aa3-b121-b2086e5dcaaf", 1, "hieutanmy321@gmail.com", false, "Nguyễn Trung", 0, "Hiếu", false, null, 1, "HIEUTANMY321@GMAIL.COM", "HIEUNGUYEN", "AQAAAAEAACcQAAAAEDg2u5B6W2YbD8oRHCeQ9R+9Ga2CeEA21KI0jUmnLc61j3sAI4UjtGsaADQfOoUyJQ==", "0965924083", false, "fb999908-1b6a-4484-8d4a-67eca343dd32", 0, false, "hieunguyen" },
+                    { 2, 0, "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM", null, "26f5fa64-67fb-4e79-ada5-94b4189866c1", 1, "hieu@gmail.com", false, "Võ Trọng", 0, "Hiếu", false, null, 1, "HIEU@GMAIL.COM", "HIEUVO", "AQAAAAEAACcQAAAAEH9aDemhfn+n8UuKN18WA6iXoZoI755U4esiNbWYNGoN9jMnii/uDATpwHGrtcZsjA==", null, false, "08be34fd-0eca-4a21-9109-ea3b0ff516fe", 0, false, "hieuvo" },
+                    { 3, 0, "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM", null, "58bca05e-b604-4603-ac8c-6b64960114d1", 1, "dat@gmail.com", false, "Lê Tấn", 0, "Đạt", false, null, 1, "DAT@GMAIL.COM", "DATLE", "AQAAAAEAACcQAAAAEFYwLCiP+SXk9o6GYfuCc7DvevaVunz2MJuhbsizC5gbE3RFZQCNL5NQbm5s4GxTmA==", null, false, "0f2c6280-7737-426f-b11f-93461f401c4b", 0, false, "datle" }
+                });
 
             migrationBuilder.InsertData(
                 table: "OrderStatus",
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { 1, "Đặt hàng thành công" },
-                    { 2, "Đã tiếp nhận" },
-                    { 3, "Đang lấy hàng" },
-                    { 4, "Đóng gói xong" },
-                    { 5, "Bàn giao vận chuyển" },
-                    { 6, "Đang vận chuyển" },
+                    { 8, "Hủy đơn hàng" },
                     { 7, "Giao hàng thành công" },
-                    { 8, "Hủy đơn hàng" }
+                    { 6, "Đang vận chuyển" },
+                    { 5, "Bàn giao vận chuyển" },
+                    { 3, "Đang lấy hàng" },
+                    { 2, "Đã tiếp nhận" },
+                    { 1, "Đặt hàng thành công" },
+                    { 4, "Đóng gói xong" }
                 });
 
             migrationBuilder.InsertData(
@@ -541,9 +534,9 @@ namespace ElectronicShop.Data.Migrations
                 columns: new[] { "Id", "Icon", "Name", "Status" },
                 values: new object[,]
                 {
+                    { 3, null, "Máy ảnh - Quay phim", true },
                     { 1, null, "Laptop - Thiết bị IT", true },
                     { 2, null, "Điện Thoại - Máy tính bảng", true },
-                    { 3, null, "Máy ảnh - Quay phim", true },
                     { 4, null, "Điện tử - Điện lạnh", true }
                 });
 
@@ -551,16 +544,6 @@ namespace ElectronicShop.Data.Migrations
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[] { 1, 1 });
-
-            migrationBuilder.InsertData(
-                table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "Address", "Birthday", "ConcurrencyStamp", "CreatedBy", "Email", "EmailConfirmed", "FirstMiddleName", "Gender", "LastName", "LockoutEnabled", "LockoutEnd", "ModifiedBy", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "Status", "TwoFactorEnabled", "UserName" },
-                values: new object[] { 3, 0, "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM", null, "cb560b6b-0c0c-4afa-ba3a-68759eea6d30", 1, "dat@gmail.com", false, "Lê Tấn", 0, "Đạt", false, null, 1, "DAT@GMAIL.COM", "DATLE", "AQAAAAEAACcQAAAAEBe7odCaf0ozUMWxt4X1fL+adD+fQMG8jRX5Dg7oTGsqNVFCLn/90nyB1X17qEpC/g==", null, false, "e4aa455f-7bb0-4bc4-849e-dbca170d7305", 0, false, "datle" });
-
-            migrationBuilder.InsertData(
-                table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "Address", "Birthday", "ConcurrencyStamp", "CreatedBy", "Email", "EmailConfirmed", "FirstMiddleName", "Gender", "LastName", "LockoutEnabled", "LockoutEnd", "ModifiedBy", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "Status", "TwoFactorEnabled", "UserName" },
-                values: new object[] { 2, 0, "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM", null, "ddc796f5-1e1c-4d5c-a57f-612ca0372c52", 1, "hieu@gmail.com", false, "Võ Trọng", 0, "Hiếu", false, null, 1, "HIEU@GMAIL.COM", "HIEUVO", "AQAAAAEAACcQAAAAEJ/A+g67n3vKYh7mYOKXLDlHE+nyjdDo4hhAOGKC98H8AWU44ezAqvjIbb/Ua8igJA==", null, false, "7fef8114-cf71-454a-a2b4-069e766417a5", 0, false, "hieuvo" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
@@ -591,16 +574,6 @@ namespace ElectronicShop.Data.Migrations
                 name: "IX_AspNetUserRoles_UserId",
                 table: "AspNetUserRoles",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AspNetUsers_CreatedBy",
-                table: "AspNetUsers",
-                column: "CreatedBy");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AspNetUsers_ModifiedBy",
-                table: "AspNetUsers",
-                column: "ModifiedBy");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Category_ModifiedBy",

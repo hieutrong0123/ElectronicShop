@@ -48,16 +48,6 @@ namespace ElectronicShop.Data.Entities
         public List<AspNetUserLogin> AspNetUserLogins { get; set; }
 
         public List<AspNetUserToken> AspNetUserTokens { get; set; }
-
-        public AspNetUser Created { get; set; }
-
-        public AspNetUser Modified { get; set; }
-
-        public List<AspNetUser> CreatedUsers { get;set;}
-
-        public List<AspNetUser> ModifiedUsers { get; set; }
-
-
     }
 }
 
