@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace ElectronicShop.Application.Users.Services
@@ -80,12 +81,15 @@ namespace ElectronicShop.Application.Users.Services
 
             if(userEmail !=null || userUserName != null )
             {
-                return new ApiErrorResult<string>("Tài khoản không tồn tại");
+                return new ApiErrorResult<string>("Tài khoản đã tồn tại");
             }
 
             var user = _mapper.Map<AspNetUser>(request);
+
             user.DateCreated = DateTime.Now;
+
             user.DateModified = user.DateCreated;
+
             user.Status = UserStatus.ACTIVE;
 
             try
@@ -108,17 +112,21 @@ namespace ElectronicShop.Application.Users.Services
         private async Task AddUserRoleAsync(AspNetUser user, string roleName)
         {
             var isAdmin = _httpContextAccessor.HttpContext.User.IsInRole(Constants.ADMIN);
-            
-            var curentUser = _httpContextAccessor.HttpContext.User.Identity.Name;
+
+            //var curentUser = _httpContextAccessor.HttpContext.User.Identity.Name;
+
+            var curentUser = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             string role = Constants.USERROLENAME;
 
-            user.CreatedBy = user.UserName;
+            user.CreatedBy = user.Id;
 
             if(isAdmin)
             {
                 role = roleName;
-                user.CreatedBy = curentUser;
+                //user.CreatedBy = curentUser;
+
+                user.CreatedBy = Int32.Parse(curentUser);
             }
 
             await _userManager.UpdateAsync(user);

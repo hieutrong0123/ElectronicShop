@@ -28,7 +28,9 @@ namespace ElectronicShop.Data.Extensions
                     PhoneNumber = "0965924083",
                     SecurityStamp = Guid.NewGuid().ToString(),
                     NormalizedUserName = "HIEUNGUYEN",
-                    NormalizedEmail = "HIEUTANMY321@GMAIL.COM"
+                    NormalizedEmail = "HIEUTANMY321@GMAIL.COM",
+                    CreatedBy = 1,
+                    ModifiedBy = 1
                 },
                 new AspNetUser
                 {
@@ -43,7 +45,9 @@ namespace ElectronicShop.Data.Extensions
                     Email = "hieu@gmail.com",
                     SecurityStamp = Guid.NewGuid().ToString(),
                     NormalizedUserName = "HIEUVO",
-                    NormalizedEmail = "HIEU@GMAIL.COM"
+                    NormalizedEmail = "HIEU@GMAIL.COM",
+                    CreatedBy = 1,
+                    ModifiedBy = 1
                 },
                 new AspNetUser
                 {
@@ -58,7 +62,9 @@ namespace ElectronicShop.Data.Extensions
                     Email = "dat@gmail.com",
                     SecurityStamp = Guid.NewGuid().ToString(),
                     NormalizedUserName = "DATLE",
-                    NormalizedEmail = "DAT@GMAIL.COM"
+                    NormalizedEmail = "DAT@GMAIL.COM",
+                    CreatedBy = 1,
+                    ModifiedBy = 1
                 }
                 );
 

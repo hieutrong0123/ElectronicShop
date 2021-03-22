@@ -23,9 +23,13 @@ namespace ElectronicShop.Data.Entities
 
         public DateTime DateModified { get; set; }
 
-        public string CreatedBy { get; set; }
+        public int CreatedBy { get; set; }
 
-        public string ModifiedBy { get; set; }
+        public int ModifiedBy { get; set; }
+
+        public List<Product> Products { get; set; }
+
+        public List<Category> Categories { get; set; }
 
         public List<FavoriteProduct> FavoriteProducts { get; set; }
 
@@ -44,6 +48,16 @@ namespace ElectronicShop.Data.Entities
         public List<AspNetUserLogin> AspNetUserLogins { get; set; }
 
         public List<AspNetUserToken> AspNetUserTokens { get; set; }
+
+        public AspNetUser Created { get; set; }
+
+        public AspNetUser Modified { get; set; }
+
+        public List<AspNetUser> CreatedUsers { get;set;}
+
+        public List<AspNetUser> ModifiedUsers { get; set; }
+
+
     }
 }
 

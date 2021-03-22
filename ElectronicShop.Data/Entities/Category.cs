@@ -20,9 +20,9 @@ namespace ElectronicShop.Data.Entities
 
         public DateTime DateModified { get; set; }
 
-        public string CreatedBy { get; set; }
+        public int CreatedBy { get; set; }
 
-        public string ModifiedBy { get; set; }
+        public int ModifiedBy { get; set; }
 
         public List<Product> Products { get; set; }
 
@@ -31,5 +31,7 @@ namespace ElectronicShop.Data.Entities
         public Category Parent { get; set; }
 
         public List<Category> Children { get; set; }
+
+        public AspNetUser AspNetUser { get; set; }
     }
 }

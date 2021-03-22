@@ -34,8 +34,8 @@ namespace ElectronicShop.Application.Products.Services
                 Alias = request.Alias,
                 DateCreated = DateTime.Now,
                 DateModified = DateTime.Now,
-                CreatedBy = "",
-                ModefiedBy = ""
+                CreatedBy = 1,
+                ModifiedBy = 1
             };
             _context.Products.Add(product);
             return await _context.SaveChangesAsync();
@@ -60,7 +60,7 @@ namespace ElectronicShop.Application.Products.Services
             product.CategoryId = update.CategoryId;
             product.Alias = update.Alias;
             product.DateModified = DateTime.Now;
-            product.ModefiedBy = update.ModefiedBy;
+            product.ModifiedBy = update.ModefiedBy;
 
             return await _context.SaveChangesAsync();
         }

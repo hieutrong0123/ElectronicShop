@@ -50,12 +50,24 @@ namespace ElectronicShop.Data.Migrations
                     Birthday = table.Column<DateTime>(type: "DateTime", nullable: true),
                     DateCreated = table.Column<DateTime>(type: "DateTime", nullable: false, defaultValueSql: "GetDate()"),
                     DateModified = table.Column<DateTime>(type: "DateTime", nullable: false, defaultValueSql: "GetDate()"),
-                    CreatedBy = table.Column<string>(maxLength: 50, nullable: true),
-                    ModifiedBy = table.Column<string>(maxLength: 50, nullable: true)
+                    CreatedBy = table.Column<int>(nullable: false),
+                    ModifiedBy = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetUsers_AspNetUsers_CreatedBy",
+                        column: x => x.CreatedBy,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_AspNetUsers_AspNetUsers_ModifiedBy",
+                        column: x => x.ModifiedBy,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -237,12 +249,18 @@ namespace ElectronicShop.Data.Migrations
                     ProductTypeId = table.Column<int>(nullable: false),
                     DateCreated = table.Column<DateTime>(type: "DateTime", nullable: false, defaultValueSql: "GetDate()"),
                     DateModified = table.Column<DateTime>(type: "DateTime", nullable: false, defaultValueSql: "GetDate()"),
-                    CreatedBy = table.Column<string>(maxLength: 50, nullable: false),
-                    ModifiedBy = table.Column<string>(maxLength: 50, nullable: true)
+                    CreatedBy = table.Column<int>(nullable: false),
+                    ModifiedBy = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Category", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Category_AspNetUsers_ModifiedBy",
+                        column: x => x.ModifiedBy,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Category_ProductType_ProductTypeId",
                         column: x => x.ProductTypeId,
@@ -301,8 +319,8 @@ namespace ElectronicShop.Data.Migrations
                     Alias = table.Column<string>(maxLength: 150, nullable: false),
                     DateCreated = table.Column<DateTime>(type: "DateTime", nullable: false, defaultValueSql: "GetDate()"),
                     DateModified = table.Column<DateTime>(type: "DateTime", nullable: false, defaultValueSql: "GetDate()"),
-                    CreatedBy = table.Column<string>(maxLength: 50, nullable: false),
-                    ModefiedBy = table.Column<string>(maxLength: 50, nullable: true)
+                    CreatedBy = table.Column<int>(nullable: false),
+                    ModifiedBy = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -311,6 +329,12 @@ namespace ElectronicShop.Data.Migrations
                         name: "FK_Product_Category_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Category",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Product_AspNetUsers_ModifiedBy",
+                        column: x => x.ModifiedBy,
+                        principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -487,34 +511,29 @@ namespace ElectronicShop.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "732419d9-a562-4dd8-a78e-1a36017beb24", "Admin", "ADMIN" },
-                    { 2, "49790a9e-a9ca-4dbe-962c-7d7e119e7982", "Employee", "EMPLOYEE" },
-                    { 3, "8e52e049-f324-418c-a958-3eca8df759fe", "User", "USER" }
+                    { 1, "82102d4e-c56e-498a-a428-5da6f5fd8fc6", "Admin", "ADMIN" },
+                    { 2, "cf3945cf-7d7b-4b19-bfec-5b3729ab59c4", "Employee", "EMPLOYEE" },
+                    { 3, "8953a270-59d5-4d10-8d8d-cf9391df5c86", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "Address", "Birthday", "ConcurrencyStamp", "CreatedBy", "Email", "EmailConfirmed", "FirstMiddleName", "Gender", "LastName", "LockoutEnabled", "LockoutEnd", "ModifiedBy", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "Status", "TwoFactorEnabled", "UserName" },
-                values: new object[,]
-                {
-                    { 1, 0, "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM", null, "741e26e8-293d-4bb3-9b94-e59f685e8f4e", null, "hieutanmy321@gmail.com", false, "Nguyễn Trung", 0, "Hiếu", false, null, null, "HIEUTANMY321@GMAIL.COM", "HIEUNGUYEN", "AQAAAAEAACcQAAAAEOMX61CauCrcYM1I1kBsE3DLm6PdYzjKa32rOvBsYHFL9ab+a3efmzmIAHfHtgXkng==", "0965924083", false, "b0d28e94-b477-4182-8b65-39ad22022d38", 0, false, "hieunguyen" },
-                    { 2, 0, "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM", null, "50e29e23-6024-4cfb-b694-c3ffa3c058d2", null, "hieu@gmail.com", false, "Võ Trọng", 0, "Hiếu", false, null, null, "HIEU@GMAIL.COM", "HIEUVO", "AQAAAAEAACcQAAAAEHzGxIovEw8TWkq/9GB8N/WPxfmLLqTeyw4KRquWsyB+C7axSRYfqAdGTLPmmu7lkQ==", null, false, "51f167dd-4abb-402e-a4cf-1b69bf773208", 0, false, "hieuvo" },
-                    { 3, 0, "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM", null, "1dff6c0c-eb79-4a72-aedd-49c7a35ab2c0", null, "dat@gmail.com", false, "Lê Tấn", 0, "Đạt", false, null, null, "DAT@GMAIL.COM", "DATLE", "AQAAAAEAACcQAAAAEMlGKQjOypgUDF5FB5dKxkBAaIpZ2bx2taJpcCZkfG5n086t47dRiARXDB9oN/j4qA==", null, false, "67f3a829-a9fc-46b2-886b-45b363871eaa", 0, false, "datle" }
-                });
+                values: new object[] { 1, 0, "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM", null, "9bcf3dba-901d-430b-8879-74d55e01032c", 1, "hieutanmy321@gmail.com", false, "Nguyễn Trung", 0, "Hiếu", false, null, 1, "HIEUTANMY321@GMAIL.COM", "HIEUNGUYEN", "AQAAAAEAACcQAAAAEJ83zvu4Hi3TDWUBwyICB+yYugiZQXxGaYD8GTtkEkotLnduvDvc9I1nY9eqSIlz8A==", "0965924083", false, "7b0aab5c-06bf-4e6f-b462-e7c88f854f78", 0, false, "hieunguyen" });
 
             migrationBuilder.InsertData(
                 table: "OrderStatus",
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { 8, "Hủy đơn hàng" },
-                    { 7, "Giao hàng thành công" },
-                    { 6, "Đang vận chuyển" },
-                    { 5, "Bàn giao vận chuyển" },
-                    { 3, "Đang lấy hàng" },
-                    { 2, "Đã tiếp nhận" },
                     { 1, "Đặt hàng thành công" },
-                    { 4, "Đóng gói xong" }
+                    { 2, "Đã tiếp nhận" },
+                    { 3, "Đang lấy hàng" },
+                    { 4, "Đóng gói xong" },
+                    { 5, "Bàn giao vận chuyển" },
+                    { 6, "Đang vận chuyển" },
+                    { 7, "Giao hàng thành công" },
+                    { 8, "Hủy đơn hàng" }
                 });
 
             migrationBuilder.InsertData(
@@ -522,9 +541,9 @@ namespace ElectronicShop.Data.Migrations
                 columns: new[] { "Id", "Icon", "Name", "Status" },
                 values: new object[,]
                 {
-                    { 3, null, "Máy ảnh - Quay phim", true },
                     { 1, null, "Laptop - Thiết bị IT", true },
                     { 2, null, "Điện Thoại - Máy tính bảng", true },
+                    { 3, null, "Máy ảnh - Quay phim", true },
                     { 4, null, "Điện tử - Điện lạnh", true }
                 });
 
@@ -532,6 +551,16 @@ namespace ElectronicShop.Data.Migrations
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[] { 1, 1 });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "Address", "Birthday", "ConcurrencyStamp", "CreatedBy", "Email", "EmailConfirmed", "FirstMiddleName", "Gender", "LastName", "LockoutEnabled", "LockoutEnd", "ModifiedBy", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "Status", "TwoFactorEnabled", "UserName" },
+                values: new object[] { 3, 0, "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM", null, "cb560b6b-0c0c-4afa-ba3a-68759eea6d30", 1, "dat@gmail.com", false, "Lê Tấn", 0, "Đạt", false, null, 1, "DAT@GMAIL.COM", "DATLE", "AQAAAAEAACcQAAAAEBe7odCaf0ozUMWxt4X1fL+adD+fQMG8jRX5Dg7oTGsqNVFCLn/90nyB1X17qEpC/g==", null, false, "e4aa455f-7bb0-4bc4-849e-dbca170d7305", 0, false, "datle" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "Address", "Birthday", "ConcurrencyStamp", "CreatedBy", "Email", "EmailConfirmed", "FirstMiddleName", "Gender", "LastName", "LockoutEnabled", "LockoutEnd", "ModifiedBy", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "Status", "TwoFactorEnabled", "UserName" },
+                values: new object[] { 2, 0, "KTX Cỏ May, khu phố 6, phường Linh Trung, quận Thủ Đức, TP.HCM", null, "ddc796f5-1e1c-4d5c-a57f-612ca0372c52", 1, "hieu@gmail.com", false, "Võ Trọng", 0, "Hiếu", false, null, 1, "HIEU@GMAIL.COM", "HIEUVO", "AQAAAAEAACcQAAAAEJ/A+g67n3vKYh7mYOKXLDlHE+nyjdDo4hhAOGKC98H8AWU44ezAqvjIbb/Ua8igJA==", null, false, "7fef8114-cf71-454a-a2b4-069e766417a5", 0, false, "hieuvo" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
@@ -562,6 +591,21 @@ namespace ElectronicShop.Data.Migrations
                 name: "IX_AspNetUserRoles_UserId",
                 table: "AspNetUserRoles",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_CreatedBy",
+                table: "AspNetUsers",
+                column: "CreatedBy");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_ModifiedBy",
+                table: "AspNetUsers",
+                column: "ModifiedBy");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Category_ModifiedBy",
+                table: "Category",
+                column: "ModifiedBy");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Category_ProductTypeId",
@@ -632,6 +676,11 @@ namespace ElectronicShop.Data.Migrations
                 name: "IX_Product_CategoryId",
                 table: "Product",
                 column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Product_ModifiedBy",
+                table: "Product",
+                column: "ModifiedBy");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductPhoto_ProductId",
@@ -710,10 +759,10 @@ namespace ElectronicShop.Data.Migrations
                 name: "OrderStatus");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Category");
 
             migrationBuilder.DropTable(
-                name: "Category");
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "ProductType");

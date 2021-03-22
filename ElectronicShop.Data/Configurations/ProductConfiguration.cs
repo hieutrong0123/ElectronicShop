@@ -53,13 +53,15 @@ namespace ElectronicShop.Data.Configurations
                 .HasColumnType("DateTime")
                 .HasDefaultValueSql("GetDate()");
 
-            builder.Property(x => x.CreatedBy)
-                .IsRequired()
-                .HasMaxLength(50);
+            builder.HasOne(x => x.AspNetUser)
+                .WithMany(x => x.Products)
+                .HasForeignKey(x => x.CreatedBy).
+                OnDelete(DeleteBehavior.Restrict);
 
-            builder.Property(x => x.ModefiedBy)
-                .IsRequired(false)
-                .HasMaxLength(50);
+            builder.HasOne(x => x.AspNetUser)
+                .WithMany(x => x.Products)
+                .HasForeignKey(x => x.ModifiedBy)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(x => x.Category)
                 .WithMany(x => x.Products)

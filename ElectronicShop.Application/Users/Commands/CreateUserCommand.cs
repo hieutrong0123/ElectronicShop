@@ -26,19 +26,23 @@ namespace ElectronicShop.Application.Users.Commands
         [Required, DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
+        [Required, MaxLength(50)]
         public string FirstMiddleName { get; set; }
 
+        [Required, MaxLength(50)]
         public string LastName { get; set; }
 
         public string Address { get; set; }
 
+        [Required, EnumDataType(typeof(Gender))]
         public Gender Gender { get; set; }
 
         public DateTime? Birthday { get; set; }
 
         [DataType(DataType.PhoneNumber)]
-        [Phone, MaxLength(30)]
+        [Phone, MaxLength(20)]
         public string PhoneNumber { get; set; }
+
         public string UserInRole {get;set;}
     }
 
