@@ -8,5 +8,6 @@ namespace ElectronicShop.Application.Authentications.Services
     {
         Task<ApiResult<string>> AuthenticateAsync(AuthenticateCommand request);
         Task<bool> SignOutAsync();
+        Task<ApiResult<string>> ForgotPasswordAsync(string email);
     }
 }

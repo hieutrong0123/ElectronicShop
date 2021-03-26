@@ -24,7 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ElectronicShop.Application\ElectronicShop.Application.csproj" />
-    <ProjectReference Include="..\ElectronicShop.Data\ElectronicShop.Data.csproj" />
+    <ProjectReference Include="..\ElectronicShop.Infrastructure\ElectronicShop.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

@@ -5,6 +5,7 @@ using ElectronicShop.Application.Products.Services;
 using ElectronicShop.Application.Users.Services;
 using ElectronicShop.Data.EF;
 using ElectronicShop.Data.Entities;
+using ElectronicShop.Infrastructure.SendMail;
 using ElectronicShop.WebApi.ActionFilters;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -73,6 +74,10 @@ namespace ElectronicShop.WebApi
 
             // For use AutoMapper
             services.AddAutoMapper(typeof(ElectronicShopProfile));
+
+            // Insert SMTP settings parser and initialize a singleton object that will handle mail service
+            services.Configure<SmtpSettings>(Configuration.GetSection("SmtpSettings"));
+            services.AddSingleton<IMailer, Mailer>();
 
             // For use ElectronicShopDbContext
             services.AddDbContext<ElectronicShopDbContext>();

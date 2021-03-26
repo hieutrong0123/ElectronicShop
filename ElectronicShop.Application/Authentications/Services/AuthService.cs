@@ -108,5 +108,19 @@ namespace ElectronicShop.Application.Authentications.Services
             _httpContextAccessor.HttpContext.Session.Remove(Constants.CURRENTUSER);
             return true;
         }
+
+        public async Task<ApiResult<string>> ForgotPasswordAsync(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+
+            if(user is null)
+            {
+                return await Task.FromResult(new ApiErrorResult<string>("Tài khoản không tồn tại"));
+            }
+
+            string token = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+            return await Task.FromResult(new ApiSuccessResult<string>(token));
+        }
     }
 }
