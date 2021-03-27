@@ -55,6 +55,13 @@ namespace ElectronicShop.WebApi.Controllers
             return Ok(result);
         }
 
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordCommand request)
+        {
+            var result = await _mediator.Send(request);
+            return Ok(result);
+        }
+
         [HttpPost("sign-out")]
         public async Task<IActionResult> SignOut()
         {

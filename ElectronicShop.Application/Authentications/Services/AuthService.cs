@@ -122,5 +122,24 @@ namespace ElectronicShop.Application.Authentications.Services
 
             return await Task.FromResult(new ApiSuccessResult<string>(token));
         }
+
+        public async Task<ApiResult<string>> ResetPasswordAsync(ResetPasswordCommand request)
+        {
+            var user = await _userManager.FindByEmailAsync(request.Email);
+
+            if(user is null)
+            {
+                return await Task.FromResult(new ApiErrorResult<string>("Người dùng không tồn tại"));
+            }
+
+            var result = await _userManager.ResetPasswordAsync(user, request.Token, request.Password);
+
+            if(result.Succeeded)
+            {
+                return await Task.FromResult(new ApiSuccessResult<string>("Đã cập nhật mật khẩu"));
+            }
+
+            return await Task.FromResult(new ApiErrorResult<string>("Đặt lại mật khẩu thất bại"));
+        }
     }
 }

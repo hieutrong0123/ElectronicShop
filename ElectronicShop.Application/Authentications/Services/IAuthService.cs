@@ -7,7 +7,11 @@ namespace ElectronicShop.Application.Authentications.Services
     public interface IAuthService
     {
         Task<ApiResult<string>> AuthenticateAsync(AuthenticateCommand request);
+
         Task<bool> SignOutAsync();
+
         Task<ApiResult<string>> ForgotPasswordAsync(string email);
+
+        Task<ApiResult<string>> ResetPasswordAsync(ResetPasswordCommand request);
     }
 }
