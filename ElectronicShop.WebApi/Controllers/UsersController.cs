@@ -48,5 +48,13 @@ namespace ElectronicShop.WebApi.Controllers
         {
             return Ok(await _mediator.Send(request));
         }
+
+        [HttpPost("update")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        [Authorize(Roles = Constants.ADMIN)]
+        public async Task<IActionResult> Update([FromBody] UpdateUserCommand request)
+        {
+            return Ok(await _mediator.Send(request));
+        }
     }
 }

@@ -59,7 +59,7 @@ namespace ElectronicShop.Application.Users.Services
 
             if (users is null)
             {
-                return new ApiErrorResult<List<UserVm>>("Không tìm thấy được người dùng nào.");
+                return new ApiErrorResult<List<UserVm>>("Không tìm thấy người dùng nào.");
             }
 
             var result = _mapper.Map<List<UserVm>>(users);
@@ -79,7 +79,7 @@ namespace ElectronicShop.Application.Users.Services
             var userEmail = await _userManager.FindByEmailAsync(request.Email);
             var userUserName = await _userManager.FindByNameAsync(request.UserName);
 
-            if(userEmail !=null || userUserName != null )
+            if (userEmail != null || userUserName != null)
             {
                 return new ApiErrorResult<string>("Tài khoản đã tồn tại");
             }
@@ -113,25 +113,100 @@ namespace ElectronicShop.Application.Users.Services
         {
             var isAdmin = _httpContextAccessor.HttpContext.User.IsInRole(Constants.ADMIN);
 
-            //var curentUser = _httpContextAccessor.HttpContext.User.Identity.Name;
+            //var currentUser = _httpContextAccessor.HttpContext.User.Identity.Name;
 
-            var curentUser = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var currentUser = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             string role = Constants.USERROLENAME;
 
             user.CreatedBy = user.Id;
 
-            if(isAdmin)
+            if (isAdmin)
             {
                 role = roleName;
-                //user.CreatedBy = curentUser;
+                //user.CreatedBy = currentUser;
 
-                user.CreatedBy = Int32.Parse(curentUser);
+                user.CreatedBy = Int32.Parse(currentUser);
             }
 
             await _userManager.UpdateAsync(user);
 
             await _userManager.AddToRoleAsync(user, role);
+        }
+
+        public async Task<ApiResult<string>> UpdateAsync(UpdateUserCommand request)
+        {
+            var user = await _userManager.FindByIdAsync(request.Id.ToString());
+
+            if (user is null || request.Status == UserStatus.DELETED)
+            {
+                return new ApiErrorResult<string>("Người dùng không tồn tại");
+            }
+
+            var username = _httpContextAccessor.HttpContext.User.Identity.Name;
+
+            try
+            {
+                await UpdateUserRoleAsync(user, request.UserInRole);
+
+                user.FirstMiddleName = request.FirstMiddleName;
+
+                user.LastName = request.LastName;
+
+                user.PhoneNumber = request.PhoneNumber;
+
+                user.Gender = request.Gender;
+
+                if (request.Birthday != null)
+                {
+                    user.Birthday = request.Birthday.GetValueOrDefault();
+                }
+
+                user.Address = request.Address;
+
+                user.Status = request.Status;
+
+                user.DateModified = DateTime.Now;
+
+                await _userManager.UpdateAsync(user);
+
+            }
+            catch
+            {
+                return await Task.FromResult(new ApiErrorResult<string>("Cập nhật người dùng thất bại"));
+            }
+
+            return await Task.FromResult(new ApiSuccessResult<string>("Cập nhật người dùng thành công"));
+        }
+
+        private async Task UpdateUserRoleAsync(AspNetUser user, string roleName)
+        {
+            var isAdmin = _httpContextAccessor.HttpContext.User.IsInRole(Constants.ADMIN);
+
+            var currentUser = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            user.ModifiedBy = user.Id;
+
+            if (isAdmin)
+            {
+                var currentRole = await _context.UserRoles
+                    .Where(x => x.UserId == user.Id)
+                    .FirstAsync();
+
+                if (roleName != currentRole.ToString())
+                {
+                    _context.UserRoles.Remove(currentRole);
+
+                    await _context.SaveChangesAsync();
+
+                    var currentRoleUpdate = await _userManager.GetRolesAsync(user);
+
+                    await _userManager.AddToRoleAsync(user, roleName);
+                }
+                user.ModifiedBy = Int32.Parse(currentUser);
+            }
+
+            await _userManager.UpdateAsync(user);
         }
     }
 }

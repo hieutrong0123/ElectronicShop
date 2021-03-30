@@ -32,6 +32,7 @@ namespace ElectronicShop.Application.Users.Commands
         [Required, MaxLength(50)]
         public string LastName { get; set; }
 
+        [MaxLength(200)]
         public string Address { get; set; }
 
         [Required, EnumDataType(typeof(Gender))]
