@@ -208,5 +208,48 @@ namespace ElectronicShop.Application.Users.Services
 
             await _userManager.UpdateAsync(user);
         }
+
+        public async Task<ApiResult<string>> UpdateMeAsync(UpdateMeUserCommand request)
+        {
+            var user = await _userManager.FindByIdAsync(request.Id.ToString());
+
+            if (user is null || request.Status == UserStatus.DELETED)
+            {
+                return new ApiErrorResult<string>("Người dùng không tồn tại");
+            }
+
+            var username = _httpContextAccessor.HttpContext.User.Identity.Name;
+
+            try
+            {
+                user.FirstMiddleName = request.FirstMiddleName;
+
+                user.LastName = request.LastName;
+
+                user.PhoneNumber = request.PhoneNumber;
+
+                user.Gender = request.Gender;
+
+                if (request.Birthday != null)
+                {
+                    user.Birthday = request.Birthday.GetValueOrDefault();
+                }
+
+                user.Address = request.Address;
+
+                user.Status = request.Status;
+
+                user.DateModified = DateTime.Now;
+
+                await _userManager.UpdateAsync(user);
+
+            }
+            catch
+            {
+                return await Task.FromResult(new ApiErrorResult<string>("Cập nhật thông tin thất bại"));
+            }
+
+            return await Task.FromResult(new ApiSuccessResult<string>("Cập nhật thông tin thành công"));
+        }
     }
 }

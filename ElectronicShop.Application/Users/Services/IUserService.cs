@@ -15,5 +15,7 @@ namespace ElectronicShop.Application.Users.Services
         Task<ApiResult<string>> CreateAsync(CreateUserCommand request);
 
         Task<ApiResult<string>> UpdateAsync(UpdateUserCommand request);
+
+        Task<ApiResult<string>> UpdateMeAsync(UpdateMeUserCommand request);
     }
 }

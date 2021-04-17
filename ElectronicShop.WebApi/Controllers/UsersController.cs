@@ -6,6 +6,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace ElectronicShop.WebApi.Controllers
@@ -22,7 +23,7 @@ namespace ElectronicShop.WebApi.Controllers
             _mediator = mediator;
             _httpContextAccessor = httpContextAccessor;
         }
-        
+
         [HttpGet("{userId}")]
         [Authorize(Roles = Constants.ADMIN)]
         public async Task<IActionResult> GetUserById(int userId)
@@ -49,11 +50,26 @@ namespace ElectronicShop.WebApi.Controllers
             return Ok(await _mediator.Send(request));
         }
 
-        [HttpPost("update")]
+        [HttpPut("update")]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [Authorize(Roles = Constants.ADMIN)]
         public async Task<IActionResult> Update([FromBody] UpdateUserCommand request)
         {
+            return Ok(await _mediator.Send(request));
+        }
+
+        [HttpPut("update/me")]
+        [Authorize]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        public async Task<IActionResult> UpdateMe([FromBody] UpdateMeUserCommand request)
+        {
+            var currentUser = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if(!currentUser.Equals(request.Id.ToString()))
+            {
+                return Ok(new { message = "Thông tin chỉnh sửa không khớp với người dùng hiện tại." });
+            }
+
             return Ok(await _mediator.Send(request));
         }
     }
