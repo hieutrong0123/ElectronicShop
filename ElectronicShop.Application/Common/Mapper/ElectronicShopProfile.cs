@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ElectronicShop.Application.Categories.Commands;
 using ElectronicShop.Application.Users.Commands;
 using ElectronicShop.Application.Users.Models;
 using ElectronicShop.Data.Entities;
@@ -11,6 +12,8 @@ namespace ElectronicShop.Application.Common.Mapper
         {
             CreateMap<AspNetUser, UserVm>();
             CreateMap<CreateUserCommand, AspNetUser>();
+
+            CreateMap<CreateCategoryCommand, Category>();
         }
     }
 }

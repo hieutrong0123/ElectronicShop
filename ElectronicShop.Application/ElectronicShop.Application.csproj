@@ -18,4 +18,9 @@
     <ProjectReference Include="..\ElectronicShop.Utilities\ElectronicShop.Utilities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Categories\Mapper\" />
+    <Folder Include="Categories\Queries\" />
+  </ItemGroup>
+
 </Project>

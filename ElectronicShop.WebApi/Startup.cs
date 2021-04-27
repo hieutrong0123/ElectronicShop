@@ -1,5 +1,6 @@
 using AutoMapper;
 using ElectronicShop.Application.Authentications.Services;
+using ElectronicShop.Application.Categories.Services;
 using ElectronicShop.Application.Common.Mapper;
 using ElectronicShop.Application.Products.Services;
 using ElectronicShop.Application.Users.Services;
@@ -94,6 +95,8 @@ namespace ElectronicShop.WebApi
 
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ICategoryService, CategoryService>();
+
 
             // In the accepted answer "Bearer " is required to be written before the actual token. 
             // A similar approach in which typing "Bearer " can be skipped is the following:
