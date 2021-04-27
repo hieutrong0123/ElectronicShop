@@ -193,13 +193,14 @@ namespace ElectronicShop.Application.Users.Services
                     .Where(x => x.UserId == user.Id)
                     .FirstAsync();
 
-                if (roleName != currentRole.ToString())
+                var currentRoleName = await _userManager.GetRolesAsync(user);
+
+
+                if (roleName != currentRoleName[0].ToString())
                 {
                     _context.UserRoles.Remove(currentRole);
 
                     await _context.SaveChangesAsync();
-
-                    var currentRoleUpdate = await _userManager.GetRolesAsync(user);
 
                     await _userManager.AddToRoleAsync(user, roleName);
                 }
