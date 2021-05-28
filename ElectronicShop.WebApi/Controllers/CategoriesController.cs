@@ -26,5 +26,12 @@ namespace ElectronicShop.WebApi.Controllers
         {
             return Ok(await _mediator.Send(request));
         }
+
+        [HttpPut("update")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        public async Task<IActionResult> Update([FromBody] UpdateCategoryCommand request)
+        {
+            return Ok(await _mediator.Send(request));
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ElectronicShop.Application.Categories.Commands;
+using ElectronicShop.Application.Categories.Mapper;
 using ElectronicShop.Application.Common.Models;
 using ElectronicShop.Data.EF;
 using ElectronicShop.Data.Entities;
@@ -46,6 +47,30 @@ namespace ElectronicShop.Application.Categories.Services
                 return await Task.FromResult(new ApiErrorResult<string>("Thêm danh mục thất bại"));
             }
             return await Task.FromResult(new ApiSuccessResult<string>("Thêm danh mục thành công"));
+        }
+
+        public async Task<ApiResult<string>> UpdateAsync(UpdateCategoryCommand request)
+        {
+            var currentUser = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            try
+            {
+                var category = await _context.Categories.FindAsync(request.Id);
+
+                category.Map(request);
+
+                category.ModifiedBy = Int32.Parse(currentUser);
+
+                _context.Categories.Update(category);
+
+                await _context.SaveChangesAsync();
+            }
+            catch
+            {
+                return await Task.FromResult(new ApiErrorResult<string>("Cập nhật danh mục sản phẩm thất bại"));
+            }
+
+            return await Task.FromResult(new ApiSuccessResult<string>("Cập nhật danh mục sản phẩm thành công"));
         }
     }
 }

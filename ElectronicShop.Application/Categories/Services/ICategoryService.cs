@@ -7,5 +7,7 @@ namespace ElectronicShop.Application.Categories.Services
     public interface ICategoryService
     {
         Task<ApiResult<string>> CreateAsync(CreateCategoryCommand request);
+
+        Task<ApiResult<string>> UpdateAsync(UpdateCategoryCommand request);
     }
 }
