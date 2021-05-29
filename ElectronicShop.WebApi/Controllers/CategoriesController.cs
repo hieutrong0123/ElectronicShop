@@ -1,8 +1,10 @@
 ﻿using ElectronicShop.Application.Categories.Commands;
+using ElectronicShop.Application.Categories.Queries;
 using ElectronicShop.Utilities.SystemConstants;
 using ElectronicShop.WebApi.ActionFilters;
 using ElectronicShop.WebApi.AuthorizeRoles;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -32,6 +34,26 @@ namespace ElectronicShop.WebApi.Controllers
         public async Task<IActionResult> Update([FromBody] UpdateCategoryCommand request)
         {
             return Ok(await _mediator.Send(request));
+        }
+
+        [HttpGet("{categoryId}")]
+        [AllowAnonymous]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        public async Task<IActionResult> GetById(int categoryId)
+        {
+            var query = new GetCategoryByIdQuery(categoryId);
+
+            return Ok(await _mediator.Send(query));
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        public async Task<IActionResult> GetAll()
+        {
+            var query = new GetAllCategoryQuery();
+
+            return Ok(await _mediator.Send(query));
         }
     }
 }

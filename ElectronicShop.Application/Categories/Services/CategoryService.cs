@@ -5,7 +5,9 @@ using ElectronicShop.Application.Common.Models;
 using ElectronicShop.Data.EF;
 using ElectronicShop.Data.Entities;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -26,7 +28,7 @@ namespace ElectronicShop.Application.Categories.Services
         public async Task<ApiResult<string>> CreateAsync(CreateCategoryCommand request)
         {
             var currentUser = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            
+
             var category = _mapper.Map<Category>(request);
 
             category.DateCreated = DateTime.Now;
@@ -71,6 +73,23 @@ namespace ElectronicShop.Application.Categories.Services
             }
 
             return await Task.FromResult(new ApiSuccessResult<string>("Cập nhật danh mục sản phẩm thành công"));
+        }
+
+        public async Task<ApiResult<Category>> GetByIdAsync(int id)
+        {
+            var category = await _context.Categories
+                .Include(x => x.Products)
+                .SingleOrDefaultAsync(x => x.Id == id);
+
+            return await Task.FromResult(new ApiSuccessResult<Category>(category));
+        }
+
+        public async Task<ApiResult<List<Category>>> GetAllAsync()
+        {
+            var categories = await _context.Categories
+                .ToListAsync();
+
+            return await Task.FromResult(new ApiSuccessResult<List<Category>>(categories));
         }
     }
 }
